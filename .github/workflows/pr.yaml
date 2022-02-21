@@ -29,10 +29,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: jportacloud/mattermost:${GITHUB_REF##*/}       
+        run: |
+          docker build -t jportacloud/mattermost:${GITHUB_REF##*/} .
+          docker push jportacloud/mattermost:${GITHUB_REF##*/}   
  
 
           
