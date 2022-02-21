@@ -47,13 +47,8 @@ jobs:
         run: |
           docker push jportacloud/mattermost:${{ env.BRANCH_NAME }}    
       - 
-        name: 'Deploy'
-        uses: 'deliverybot/helm@v1'
+        name: Deploy
+        uses: WyriHaximus/github-action-helm3@v2
         with:
-          release: 'mattermost'
-          namespace: 'devops-challenge'
-          chart: './chart'
-          token: '${{ github.token }}'
-          helm: helm3
-        env:
-          KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
+          exec: helm upgrade mattermost ./chart/ --install --wait --atomic --namespace=devops-challenge
+          kubeconfig: '${{ secrets.KUBECONFIG }}'
