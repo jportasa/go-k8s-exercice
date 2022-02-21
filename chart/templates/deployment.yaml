@@ -17,6 +17,7 @@ spec:
       containers:
       - name: mattermost-test
         image: {{ .Values.image }}
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         resources:
