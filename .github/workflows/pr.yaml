@@ -46,3 +46,7 @@ jobs:
         name: Push to Dockerhub
         run: |
           docker push jportacloud/mattermost:${{ env.BRANCH_NAME }}    
+      - 
+        name: 'Deploy to k8s'
+        run: |
+          helm upgrade mattermost ./chart --create-namespace -n devops-challenge  --debug 
