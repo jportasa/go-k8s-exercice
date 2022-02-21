@@ -33,5 +33,3 @@ jobs:
           docker build -t jportacloud/mattermost:${GITHUB_REF##*/} .
           docker push jportacloud/mattermost:${GITHUB_REF##*/}   
  
-
-          
