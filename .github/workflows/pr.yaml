@@ -55,7 +55,7 @@ jobs:
           goarch: amd64   
           goversion: 1.17       
           project_path: './src'
-          binary_name: mattermost
+          binary_name: 'mattermost'
       -
         name: Release push
         uses: "marvinpinto/action-automatic-releases@latest"
