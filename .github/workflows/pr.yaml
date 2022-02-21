@@ -30,10 +30,10 @@ jobs:
       -
         name: Build 
         run: |
-          echo ${GITHUB_REF##*/}
-          docker build -t jportacloud/mattermost:${GITHUB_REF##*/} .
+          echo ${{ github.head_ref }}
+          docker build -t jportacloud/mattermost:${{ github.head_ref }} .
       -
         name: Push to Dockerhub
         run: |
-          docker push jportacloud/mattermost:${GITHUB_REF##*/}    
+          docker push jportacloud/mattermost:${{ github.head_ref }}    
 
