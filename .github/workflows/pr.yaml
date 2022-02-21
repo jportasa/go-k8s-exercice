@@ -52,7 +52,7 @@ jobs:
         with:
           release: 'mattermost'
           namespace: 'devops-challenge'
-          chart: 'chart'
+          chart: './chart'
           token: '${{ github.token }}'
           helm: helm3
         env:
