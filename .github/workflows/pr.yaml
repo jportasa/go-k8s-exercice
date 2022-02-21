@@ -30,8 +30,8 @@ jobs:
       -
         name: Build and push
         run: |
-          docker build -t jportacloud/mattermost:${GITHUB_REF#refs/heads/} .
-          docker push jportacloud/mattermost:${GITHUB_REF#refs/heads/}   
+          docker build -t jportacloud/mattermost:${GITHUB_REF##*/} .
+          docker push jportacloud/mattermost:${GITHUB_REF##*/}   
  
 
           
