@@ -47,8 +47,20 @@ jobs:
         run: |
           docker push jportacloud/mattermost:${{ env.BRANCH_NAME }}    
       - 
-        name: Deploy
-        uses: WyriHaximus/github-action-helm3@v2
+        name: Release
+        uses: nida/go-release-action@v2.3
         with:
-          exec: helm upgrade mattermost ./chart/ --install --wait --atomic --namespace=devops-challenge
-          kubeconfig: '${{ secrets.KUBECONFIG }}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: linux
+          goarch: amd64   
+          goversion: 1.17       
+          project_path: './src'
+          binary_name: mattermost
+      -
+        name: Release push
+        uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            prerelease: false
+            files: |
+              *           
