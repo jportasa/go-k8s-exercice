@@ -1,6 +1,8 @@
 FROM golang:1.17-alpine AS build
 
 WORKDIR /app
+ENV GOARCH=linux
+ENV GOOS=amd64
 COPY ./src/*.go ./
 RUN go build -o hello-mattermost main.go
 
