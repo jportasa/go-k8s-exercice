@@ -51,19 +51,6 @@ jobs:
         with:
           push: true
           tags: jportacloud/mattermost:${{ steps.meta.outputs.tags }}       
-      - 
-        name: 'Deploy'
-        uses: 'deliverybot/helm@v1'
-        with:
-          release: 'mattermost'
-          namespace: 'devops-challenge'
-          chart: 'mattermost'
-          token: '${{ github.token }}'
-          values: |
-            service.type: NodePort
-            image:
-            replicas:3
-        env:
-          KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'         
+ 
 
           
