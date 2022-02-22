@@ -7,6 +7,8 @@ on:
   push:
     tags:
       - 'v*'
+  release:
+    types: [created]
 
 jobs:
   ci:
@@ -45,7 +47,13 @@ jobs:
       -
         name: Push to Dockerhub
         run: |
-          docker push jportacloud/mattermost:${{ env.BRANCH_NAME }}    
+          docker push jportacloud/mattermost:${{ env.BRANCH_NAME }}  
+      - 
+        name: Deploy
+        uses: WyriHaximus/github-action-helm3@v2
+        with:
+          exec: helm upgrade mattermost ./chart/ --install --wait --atomic --namespace=devops-challenge
+          kubeconfig: '${{ secrets.KUBECONFIG }}'            
       - 
         name: Release
         uses: nida/go-release-action@v2.3

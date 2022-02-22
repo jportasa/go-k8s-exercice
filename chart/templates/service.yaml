@@ -9,4 +9,4 @@ spec:
     nodePort: 30950
     port: 8080
   selector:
-      app: mattermost
+    app: mattermost

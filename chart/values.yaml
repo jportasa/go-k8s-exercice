@@ -1,2 +1,2 @@
-image: jportacloud/mattermost:feat-MM-1234
+image: jportacloud/mattermost:latest
 replicas: 2
