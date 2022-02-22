@@ -1,7 +1,7 @@
 ## GH Actions Secrets needed
 
-DOCKERHUB_USERNAME
-DOCKERHUB_TOKEN
+DOCKERHUB_USERNAME,
+DOCKERHUB_TOKEN,
 KUBECONFIG
 
 ## Create k8s cluster issues
