@@ -13,6 +13,6 @@ So what I did to test the helm upgrade command was to run it from my local.
 
 Although not implemented, the idea is to add in GH actions pipeline a step triggered when a tag is created, use GoReleaser (https://goreleaser.com/) for example to create the binaries for the different architectures, and push them in the release. Once done we would follow the steps to push to dockerHub and Deploy it with helm upgrade.
 
-# Protect branches and tests
+## Protect branches and tests
 
-Although not implemented, in the repo setup we would add a Master protecrted branch with the corresponding tests, like helm lint, Open Policy to check the manifests, go tests,...
+Although not implemented, in the repo setup we would add a Master protected branch with the corresponding tests, like helm lint, Open Policy as Admission Controller, go tests,..
