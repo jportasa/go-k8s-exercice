@@ -1,8 +1,18 @@
 ## k8s local cluster over kind 
-````
+
+```
 kind create cluster --config ./k8s-cluster-kind/cluster.yaml
-````
+```
 
-## Run GH Actions locally to can deploy in local k8s
+## GH Actions Secrets needed
 
-I used https://github.com/nektos/act
+DOCKERHUB_USERNAME
+DOCKERHUB_TOKEN
+KUBECONFIG
+
+
+## Create EKS cluster
+
+```
+eksctl create cluster --name=cluster-1 --nodes=1
+```

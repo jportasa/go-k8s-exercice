@@ -7,8 +7,6 @@ on:
   push:
     tags:
       - 'v*'
-  release:
-    types: [created]
 
 jobs:
   ci:
@@ -52,23 +50,7 @@ jobs:
         name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade mattermost ./chart/ --install --wait --atomic --namespace=devops-challenge
+          exec: helm upgrade mattermost ./chart/ --install --wait --atomic --namespace devops-challenge --set image=jportacloud/mattermost:${{ env.BRANCH_NAME }} --set replicas=3
           kubeconfig: '${{ secrets.KUBECONFIG }}'            
-      - 
-        name: Release
-        uses: nida/go-release-action@v2.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          goos: linux
-          goarch: amd64   
-          goversion: 1.17       
-          project_path: './src'
-          binary_name: 'mattermost'
-      -
-        name: Release push
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            *           
+
+        
