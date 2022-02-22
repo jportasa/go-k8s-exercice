@@ -4,7 +4,6 @@ DOCKERHUB_USERNAME
 DOCKERHUB_TOKEN
 KUBECONFIG
 
-
 ## Create k8s cluster issues
 
 I need a public k8s cluster so that GH Actions runner can reach it. I tried to install kind (https://kind.sigs.k8s.io/) in an AWS EC2 but although the EC2 was public I could not make the k8s API certificate valid for an external EC2 public IP. I would need more time to create a EKS cluster via eksctl or terraform.
