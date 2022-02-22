@@ -1,4 +1,2 @@
-service:
-  type: NodePort
-image: jportasa/mattermost-test:0.1.0  
+image: jportacloud/mattermost:latest
 replicas: 2
